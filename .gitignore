@@ -38,6 +38,7 @@ vendor
 
 # testing
 /coverage
+/tests/cypress/screenshots
 
 # production
 /build
@@ -54,3 +55,4 @@ db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.tsbuildinfo
