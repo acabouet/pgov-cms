@@ -43,7 +43,20 @@ export const graphqlQueries = {
                           targetValue
                           value
                           status
-
+                          period {
+                            ... on StoragePeriod {
+                              id
+                              name
+                              dateRange {
+                                end {
+                                  time
+                                }
+                                start {
+                                  time
+                                }
+                              }
+                            }
+                          }
                         }
                       }
                     }
