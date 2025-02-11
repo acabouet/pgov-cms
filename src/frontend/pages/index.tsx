@@ -20,9 +20,10 @@ export const getStaticProps = async () => {
     method: "POST",
     withAuth: true, // Make authenticated requests using OAuth.
     body: JSON.stringify({
-      query: graphqlQueries.goalsView("", [], "53"),
+      query: graphqlQueries.goalsView("", [], "53",[]),
     }),
   });
+  
   const { data } = await response.json();
   return {
     props: {

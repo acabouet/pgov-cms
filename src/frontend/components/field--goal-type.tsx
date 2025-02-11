@@ -6,6 +6,10 @@ export function FieldGoalType({ field_goal_type }) {
       goalTypeName = "Agency priority goal";
       goalTypeClasses = "bg-primary-vivid";
       break;
+    case "pma":
+      goalTypeName = "PMA";
+      goalTypeClasses = "bg-primary-vivid";
+      break;
     case "strategic":
       goalTypeName = "Strategic goal";
       goalTypeClasses = "bg-base-darkest";
@@ -16,6 +20,10 @@ export function FieldGoalType({ field_goal_type }) {
         break;
     case "plan":
       goalTypeName = "Plan";
+      goalTypeClasses = "bg-base-darkest";
+      break;
+    case "indicator":
+      goalTypeName = "Indicator";
       goalTypeClasses = "bg-base-darkest";
       break;
     default:

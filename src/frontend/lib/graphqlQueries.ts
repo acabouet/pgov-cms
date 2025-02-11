@@ -111,6 +111,21 @@ export const graphqlQueries = {
               goals {
                 ... on NodeGoal {
                   id
+                  title
+                  path
+                  image {
+                    ... on MediaImage {
+                      id
+                      name
+                      mediaImage {
+                        alt
+                        title
+                        variations(styles: THIRD1X1) {
+                          url
+                        }
+                      }
+                    }
+                  }
                   objectives {
                     ... on NodeObjective {
                       id
@@ -159,12 +174,15 @@ export const graphqlQueries = {
     fulltext: string | string[],
     facets: string | string[],
     administration: string | string[],
+    type: string | string[],
   ) =>
     `query GoalsQuery {
       goalsGraphql1(filter: {
         aggregated_field: "${fulltext}",
         Topics: ${JSON.stringify(facets)},
-        Administration: ${administration}
+        aggregated_administration: ${JSON.stringify(administration)},
+        aggregated_type: ${JSON.stringify(type)},
+        storage_topic_name: ${JSON.stringify(facets)}
       }) {
     pageInfo {
       total
@@ -229,6 +247,20 @@ export const graphqlQueries = {
         plan {
           ... on NodePlan {
             id
+            administration {
+              ... on StorageAdministration {
+                id
+                name
+                dateRange {
+                  end {
+                    time
+                  }
+                  start {
+                    time
+                  }
+                }
+              }
+            }
             agency {
               ... on NodeAgency {
                 id
@@ -258,6 +290,20 @@ export const graphqlQueries = {
         title
         id
         path
+        administration {
+          ... on StorageAdministration {
+            id
+            name
+            dateRange {
+              end {
+                time
+              }
+              start {
+                time
+              }
+            }
+          }
+        }
         agency {
           ... on NodeAgency {
             id
@@ -281,9 +327,70 @@ export const graphqlQueries = {
           }
         }
       }
+      ...on StorageIndicator {
+        id
+        description {
+          value
+        }
+        objective {
+          ... on NodeObjective {
+            id
+            goal {
+              ... on NodeGoal {
+                id
+                path
+                plan {
+                  ... on NodePlan {
+                    id
+                    administration {
+                      ... on StorageAdministration {
+                        id
+                        name
+                        dateRange {
+                          end {
+                            time
+                          }
+                          start {
+                            time
+                          }
+                        }
+                      }
+                    }
+                    agency {
+                      ... on NodeAgency {
+                        id
+                        acronym
+                        logo {
+                          ... on MediaImage {
+                            id
+                            name
+                            mediaImage {
+                              url
+                            }
+                          }
+                        }
+                        title
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            indicators {
+              ... on StorageIndicator {
+                id
+                name
+                values
+                targetValues
+                dates
+              }
+            }
+          }
+        }
+      }
     }
-  }
-    }`,
+    }
+  }`,
   taxonomyTopics: () =>
     `
     query getTopics {

@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import Link from 'next/link'
+import Image from "next/image";
 import { DrupalNode } from "next-drupal";
 import { Icon, Button, ButtonGroup } from "@trussworks/react-uswds";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
@@ -157,26 +158,32 @@ export function NodePlan({ node, storageData, ...props }: NodePlanProps) {
                   <ul>
                     <ResponsiveMasonry
                       columnsCountBreakPoints={masonryBP}
-                      gutterBreakpoints={{ 350: "12px", 750: "16px", 900: "24px" }}
-                    >
-                      <Masonry>
-                        {field_goals.map((goal) => {
-                          return (
-                            <Link key={goal.id} href={goal.path.alias} className="text-no-underline">
-                              <div className="usa-card__container">
-                                <div className="usa-card__header">
-                                  <h4 className="usa-card__heading ">{goal.title}</h4>
-                                </div>
-                                <div className="usa-card__media">
-                                  <div className="usa-card__img">
-                                    {/* <img
-                                    src="https://designsystem.digital.gov/img/introducing-uswds-2-0/built-to-grow--alt.jpg"
-                                    alt="A placeholder image"
-                                  /> */}
-                                  </div>
-                                </div>
+                      gutterBreakpoints={{350: "12px", 750: "16px", 900: "24px"}}
+                  >
+                    <Masonry>
+                      {storageData.goals?.map((goal) => {
+                        return(
+                          <Link key={goal.id} href={goal.path} className="text-no-underline">
+                            <div className="usa-card__container">
+                              <div className="usa-card__header">
+                                <h4 className="usa-card__heading ">{goal.title}</h4>
                               </div>
-                            </Link>
+                              <div className="usa-card__media">
+                                {goal?.image?.mediaImage && (
+                                  <div className="usa-card__img">
+                                    <Image
+                                      src={goal.image.mediaImage.variations[0].url}
+                                      width={150}
+                                      height={150}
+                                      alt={goal.image.mediaImage.alt}
+                                      priority
+                                      className="flex-align-self-center"
+                                    />
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </Link>
                           )
                         })}
                       </Masonry>

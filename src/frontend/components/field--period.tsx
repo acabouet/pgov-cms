@@ -1,15 +1,17 @@
-export function FieldPeriod({field_period}) {
-  if (!field_period?.name) {
+export function FieldPeriod({startTime, endTime}) {
+  if (!startTime) {
     return (
       <span className={`padding-x-105 font-sans-3xs`}>
         default
       </span>
     )
   }
-  let period = field_period.name.startsWith("FY") ? field_period.name.replace(/^[^0-9]+/, '') : field_period.name;
+  const startDate = new Date(startTime);
+  const endDate = new Date(endTime)
+  const dateOptions: Intl.DateTimeFormatOptions = {year: "numeric"}
   return (
     <span className={`padding-x-105 font-sans-3xs`}>
-      {period}
+      {startDate.toLocaleDateString('en-US', dateOptions)}-{endDate.toLocaleDateString('en-US', dateOptions).substr(-2)}
     </span>
   );
 }

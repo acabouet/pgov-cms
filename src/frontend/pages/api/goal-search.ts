@@ -25,11 +25,17 @@ export default async function handler(
   const administration = req.query.administration
     ? req.query.administration
     : "53";
+  const type = req.query.type ? req.query.type : [];
   const response = await drupal.fetch(graphqlUrl.toString(), {
     method: "POST",
     withAuth: true, // Make authenticated requests using OAuth.
     body: JSON.stringify({
-      query: graphqlQueries.goalsView(fulltext, facetsList, administration),
+      query: graphqlQueries.goalsView(
+        fulltext,
+        facetsList,
+        administration,
+        type,
+      ),
     }),
   });
   const { data } = await response.json();

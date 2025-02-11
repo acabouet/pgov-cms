@@ -684,86 +684,138 @@ display:
                   sort: 50
                 settings:
                   sort: ASC
-        field_administration:
-          id: field_administration
+        facets_aggregated_administration:
+          id: facets_aggregated_administration
           table: search_api_index_goals
-          field: field_administration
+          field: facets_aggregated_administration
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: search_api_numeric
-          operator: '!='
-          value:
-            min: ''
-            max: ''
-            value: '54'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: field_administration_op
-            label: Administration
-            description: null
-            use_operator: false
-            operator: field_administration_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_administration
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            min_placeholder: null
-            max_placeholder: null
-            placeholder: null
-          is_grouped: false
-          group_info:
-            label: Administration
-            description: null
-            identifier: field_administration
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items:
-              1: {  }
-              2: {  }
-              3: {  }
-        field_administration_1:
-          id: field_administration_1
-          table: search_api_index_goals
-          field: field_administration
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: search_api_numeric
+          plugin_id: facets_filter
           operator: '='
-          value:
-            min: ''
-            max: ''
-            value: ''
+          value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: field_administration_1_op
-            label: Administration
+            operator_id: ''
+            label: 'Aggregated administration'
             description: ''
             use_operator: false
-            operator: field_administration_1_op
+            operator: ''
             operator_limit_selection: false
             operator_list: {  }
-            identifier: Administration
+            identifier: aggregated_administration
             required: false
             remember: false
-            multiple: false
+            multiple: true
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
               content_editor: '0'
               administrator: '0'
               next_js_site: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            min_count: 1
+            show_numbers: false
+            processor_configs: {  }
+        facets_aggregated_type:
+          id: facets_aggregated_type
+          table: search_api_index_goals
+          field: facets_aggregated_type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: facets_filter
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: type
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: aggregated_type
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              next_js_site: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            min_count: 1
+            show_numbers: true
+            processor_configs:
+              raw_value_widget_order:
+                weights:
+                  sort: 50
+                settings:
+                  sort: ASC
+        aggregated_administration:
+          id: aggregated_administration
+          table: search_api_index_goals
+          field: aggregated_administration
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_string
+          operator: '!='
+          value:
+            min: ''
+            max: ''
+            value: '46'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -808,6 +860,221 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      filters:
+        aggregated_field:
+          id: aggregated_field
+          table: search_api_index_goals
+          field: aggregated_field
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_string
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: aggregated_field_op
+            label: 'Aggregated field'
+            description: ''
+            use_operator: false
+            operator: aggregated_field_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: aggregated_field
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              next_js_site: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: 'Aggregated field'
+            description: null
+            identifier: aggregated_field
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+        facets_name:
+          id: facets_name
+          table: search_api_index_goals
+          field: facets_name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: facets_filter
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Topics » Taxonomy term » Name'
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: Topics
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              next_js_site: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            min_count: 1
+            show_numbers: true
+            processor_configs:
+              combine_processor:
+                weights:
+                  build: 5
+                settings: {  }
+              raw_value_widget_order:
+                weights:
+                  sort: 50
+                settings:
+                  sort: ASC
+        facets_aggregated_type:
+          id: facets_aggregated_type
+          table: search_api_index_goals
+          field: facets_aggregated_type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: facets_filter
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: type
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: aggregated_type
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              next_js_site: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            min_count: 1
+            show_numbers: false
+            processor_configs: {  }
+        facets_aggregated_administration:
+          id: facets_aggregated_administration
+          table: search_api_index_goals
+          field: facets_aggregated_administration
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: facets_filter
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Aggregated administration'
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: aggregated_administration
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              next_js_site: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            min_count: 1
+            show_numbers: false
+            processor_configs: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        filters: false
+        filter_groups: false
       display_extenders: {  }
       path: goals
     cache_metadata:

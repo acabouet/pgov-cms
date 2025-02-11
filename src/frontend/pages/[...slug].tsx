@@ -88,8 +88,9 @@ export async function getStaticProps(
       "field_agency.field_logo",
       "field_agency.field_logo.field_media_image",
       "field_goals.field_objectives",
+      "field_goals.field_image.field_media_image"
     ]);
-    params.addFields("node--goal", ["title", "field_objectives", "path"]);
+    params.addFields("node--goal", ["title", "field_objectives", "path", "field_image"]);
     params.addFields("node--objective", ["title", "body", "field_indicators"]);
   }
 
