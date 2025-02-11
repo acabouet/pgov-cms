@@ -13,7 +13,7 @@ const config: Config = {
   url: 'https://your-docusaurus-site.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/pgov-cms/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -30,18 +30,20 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
   presets: [
     [
       'classic',
       {
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          routeBasePath: '/',
-          editUrl:
-            'https://github.com/CivicActions/pgov-cms/tree/main/',
+          editUrl: 'https://github.com/CivicActions/pgov-cms/blob/main/docs/',
         },
         /** Will not use blog on this site.
         blog: {
@@ -98,7 +100,7 @@ const config: Config = {
           items: [
             {
               label: 'Overview',
-              to: '/docs/',
+              to: '/pgov-cms/',
             },
           ],
         },
