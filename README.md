@@ -32,5 +32,23 @@ Sandbox Frontend URL: http://localhost:3000
 8. After code review, assign back to original ticket holder
 9. Ticket holder merges their PR and changes ticket status to done
 
+## Deployments
 
+### Pre-requisites
+- Install Cloud Foundry CLI: https://docs.cloudfoundry.org/cf-cli/install-go-cli.html
+- Login with the CLI: https://docs.cloudfoundry.org/cf-cli/getting-started.html
+
+Deployments to Cloud.gov are accomplished through the use of Cloud Foundry CLI which in turn communicates with the Cloud Foundry API to manage the presrcribed resources. The above pre-requisites should be completed prior to proceeding to the deployment steps below.
+
+To deploy, we utilize the `cf push` CLI command.
+
+Deploy the Drupal backend:
+```
+cf push PGOV-CMS
+```
+
+Deploy the Next.js frontend:
+```
+cf push PGOV-Frontend
+```
 
