@@ -44,6 +44,7 @@ module:
   help: 0
   ief_table_view_mode: 0
   image: 0
+  image_styles_generator: 0
   inline_entity_form: 0
   jsonapi: 0
   jsonapi_defaults: 0
