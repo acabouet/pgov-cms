@@ -4,7 +4,7 @@ default_config: &defaults
   buildpacks:
     - https://github.com/cloudfoundry/apt-buildpack
     - php_buildpack
-  disk_quota: 4G
+  disk_quota: 5G
   stack: cflinuxfs4
   timeout: 180
   services:

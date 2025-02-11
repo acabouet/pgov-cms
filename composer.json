@@ -15,11 +15,7 @@
         }
     ],
     "scripts": {
-        "phpcs": "phpcs --standard=phpcs.xml",
-        "post-install-cmd": [
-            "php -r \"copy('.githooks/pre-commit', '.git/hooks/pre-commit');\"",
-            "php -r \"chmod('.git/hooks/pre-commit', 0755);\""
-        ]
+        "phpcs": "phpcs --standard=phpcs.xml"
     },
     "require": {
         "composer/installers": "^2.0",
@@ -39,6 +35,7 @@
         "drupal/graphql": "^4.9",
         "drupal/graphql_compose": "^2.2",
         "drupal/ief_table_view_mode": "^3.0",
+        "drupal/image_styles_generator": "^1.2",
         "drupal/inline_entity_form": "^3.0@RC",
         "drupal/jsonapi_extras": "^3.26",
         "drupal/migrate_plus": "^6.0",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6fdd724cffc88b731b92a938b0ace39",
+    "content-hash": "2e10458b33c2132c7aadf975ced87e9d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2136,6 +2136,65 @@
             "homepage": "https://www.drupal.org/project/ief_table_view_mode",
             "support": {
                 "source": "https://git.drupalcode.org/project/ief_table_view_mode"
+            }
+        },
+        {
+            "name": "drupal/image_styles_generator",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/image_styles_generator.git",
+                "reference": "1.2.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/image_styles_generator-1.2.1.zip",
+                "reference": "1.2.1",
+                "shasum": "c2367bd4292f9dbe357f6c847d5d28972d6c6cab"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11"
+            },
+            "require-dev": {
+                "drupal/webp": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.2.1",
+                    "datestamp": "1738323383",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "albeorte",
+                    "homepage": "https://www.drupal.org/user/3659011"
+                },
+                {
+                    "name": "eduardo morales alberti",
+                    "homepage": "https://www.drupal.org/user/3546420"
+                },
+                {
+                    "name": "juanjol",
+                    "homepage": "https://www.drupal.org/user/1770136"
+                },
+                {
+                    "name": "tunic",
+                    "homepage": "https://www.drupal.org/user/397132"
+                }
+            ],
+            "description": "Generates image style derivatives using a command.",
+            "homepage": "https://www.drupal.org/project/image_styles_generator",
+            "support": {
+                "source": "https://git.drupalcode.org/project/image_styles_generator"
             }
         },
         {
