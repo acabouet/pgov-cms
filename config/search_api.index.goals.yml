@@ -8,12 +8,22 @@ dependencies:
     - search_api.server.database_search
   module:
     - node
+    - storage
     - taxonomy
 id: goals
 name: Goals
 description: ''
 read_only: false
 field_settings:
+  aggregated_administration:
+    label: 'Aggregated administration'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields:
+        - 'entity:node/field_administration'
+        - 'entity:storage/field_administration'
   aggregated_field:
     label: 'Aggregated field'
     property_path: aggregated_field
@@ -25,6 +35,15 @@ field_settings:
         - 'entity:node/field_agency'
         - 'entity:node/field_goals'
         - 'entity:node/title'
+  aggregated_type:
+    label: type
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields:
+        - 'entity:node/type'
+        - 'entity:storage/type'
   field_administration:
     label: Administration
     datasource_id: 'entity:node'
@@ -50,6 +69,14 @@ datasource_settings:
       selected:
         - goal
         - plan
+    languages:
+      default: true
+      selected: {  }
+  'entity:storage':
+    bundles:
+      default: false
+      selected:
+        - indicator
     languages:
       default: true
       selected: {  }

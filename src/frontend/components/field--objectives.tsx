@@ -72,13 +72,3 @@ export function FieldObjectives({fieldObjectives} : FieldObjectiveProps) {
     </div>
   );
 }
-
-                  // return(
-                  //   <li key={goal.id} >
-                  //     <Link
-                  //       className={`grid-row flex-no-wrap flex-justify text-no-underline font-sans-md padding-2 text-base-darkest ${linkBorders}`}
-                  //       href={goal.path.alias}>
-                  //         <span>{goal.title}</span>
-                  //         <Icon.NavigateNext size={3} aria-hidden={true} />
-                  //     </Link>
-                  //   </li>

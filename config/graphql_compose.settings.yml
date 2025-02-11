@@ -86,6 +86,9 @@ entity_config:
       enabled: true
     indicator:
       enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
     measurement:
       enabled: true
     period:

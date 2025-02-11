@@ -9,8 +9,8 @@ interface NodePlanCardProps {
   goal: NodePlanProps
 }
 
-export function NodePlanCard({ goal, ...props }: NodePlanCardProps) {
-  const { title, path, agency, period } = goal;
+export function NodePlanCard({ goal, ...props }: any) {
+  const { title, path, agency, administration } = goal;
   const { acronym: agencyAcronym, logo: agencyLogo, title: agencyTitle } = agency;
   return (
     <div className="goal-card padding-1">
@@ -19,7 +19,10 @@ export function NodePlanCard({ goal, ...props }: NodePlanCardProps) {
         <div className="usa-card__container" >
           <div className="grid-row flex-justify padding-top-1 padding-x-2">
             <FieldGoalType field_goal_type={'plan'} />
-            <FieldPeriod field_period={period} />
+            <FieldPeriod
+              startTime={administration.dateRange.start.time}
+              endTime={administration.dateRange.end.time}
+            />
           </div>
           <div className="usa-card__header">
             <h4 className="usa-card__heading">{title}</h4>

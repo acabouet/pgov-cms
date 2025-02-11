@@ -4,6 +4,7 @@ import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import { NodeGoalProps, NodePlanProps, ViewFilter } from "lib/types";
 import { NodeGoalCard } from "./node--goal--card";
 import { NodePlanCard } from "./node--plan--card";
+import { StorageIndicatorCard } from "./storage--indicator--card";
 import { ViewGoalSearchFulltext } from "./view--goal-search--fulltext";
 import ViewGoalFacets from "./view--goal-facets";
 import CustomButton from "./button--custom";
@@ -15,16 +16,25 @@ interface ViewGoalSearch {
   total: number
 }
 
-const isNodeGoalProps = (goal: NodeGoalProps | NodePlanProps): goal is NodeGoalProps => {
-  return 'goalType' in goal;
-};
+const renderCard = (goal: any) => {
+  if(goal.goalType) {
+    return <NodeGoalCard key={goal.id} goal={goal} />;
+  } else if(goal.agency) {
+    return <NodePlanCard key={goal.id} goal={goal} />;
+  } else if(goal.objective?.indicators) {
+    return <StorageIndicatorCard key={goal.id} goal={goal} />;
+  } else {
+    return <p>Error</p>
+  }
+}
 
 export default function GoalsSearchView({ filters, goals, total, description }: ViewGoalSearch) {
   const offsetAmount = 15;
   const [fulltext, setFulltext] = useState(filters[0]?.value ? filters[0].value : "");
   const [administration, setAdministration] = useState("53");
   const [totalResults, setTotalResults] = useState(total)
-  const [displayGoals, setDisplayGoals] = useState(goals)
+  const [displayGoals, setDisplayGoals] = useState(goals);
+  const [viewType, setViewType] = useState([]);
   const [facets, setFacets] = useState(filters[1]?.options ? filters[1].options : [])
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [offset, setOffset] = useState(offsetAmount);
@@ -37,7 +47,7 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
       e.preventDefault();
     }
     const cleanFacets = facets.map((f) => encodeURIComponent(f));
-    const url = `/api/goal-search?fulltext=${fulltext}&facets=${cleanFacets}&administration=${administration}`;
+    const url = `/api/goal-search?fulltext=${fulltext}&facets=${cleanFacets}&administration=${administration}&type=${viewType}`;
     setOffset(offsetAmount)
     try {
       const response = await fetch(url);
@@ -52,7 +62,7 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
     } catch (error) {
       console.error(error.message);
     }
-  }, [fulltext, administration])
+  }, [fulltext, administration, viewType])
 
 
 
@@ -100,26 +110,30 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
           <ul className="add-list-reset search-goals--toggle hr-lines">
             <li>
               <CustomButton
-                text="Everything"
-                className={`radius-pill active`}
+                onClick={() => setViewType([])}
+                className={`radius-pill ${viewType.length === 0 ? "active" : ""}`}
+                text={"Everything"}
               />
             </li>
             <li>
               <CustomButton
-                text="Plans"
-                className={`radius-pill`}
+                onClick={() => setViewType(["plan"])}
+                className={`radius-pill ${(viewType.length > 0 && viewType[0]) === "plan" ? "active" : ""}`}
+                text={"Plans"}
+                />
+            </li>
+            <li>
+              <CustomButton
+                onClick={() => setViewType(["goal"])}
+                className={`radius-pill ${(viewType.length > 0 && viewType[0]) === "goal" ? "active" : ""}`}
+                text={"Goals"}
               />
             </li>
             <li>
               <CustomButton
-                text="Goals"
-                className={`radius-pill`}
-              />
-            </li>
-            <li>
-              <CustomButton
-                text="Indicators"
-                className={`radius-pill`}
+                onClick={() => setViewType(["indicator"])}
+                className={`radius-pill ${(viewType.length > 0 && viewType[0]) === "indicator" ? "active" : ""}`}
+                text={"Indicators"}
               />
             </li>
           </ul>
@@ -133,13 +147,9 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
                 gutterBreakpoints={{350: "12px", 750: "16px", 900: "24px"}}
             >
                 <Masonry>
-                {displayGoals.slice(0, offset).map((goal) => (
-                  isNodeGoalProps(goal) ? (
-                    <NodeGoalCard key={goal.id} goal={goal} />
-                  ) : (
-                    <NodePlanCard key={goal.id} goal={goal} />
-                  )
-                  ))}
+                  {displayGoals.slice(0, offset).map((goal) => {
+                    return renderCard(goal)
+                  })}
                 </Masonry>
             </ResponsiveMasonry>
 
@@ -147,7 +157,7 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
               <div className="usa-alert usa-alert--warning usa-alert--slim">
                 <div className="usa-alert__body">
                   <p className="usa-alert__text">
-                    No matching goals.
+                    No matching results.
                   </p>
                 </div>
               </div>

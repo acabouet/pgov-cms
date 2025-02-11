@@ -2,26 +2,11 @@ import { formatDate } from "lib/utils";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { useState } from "react";
 import { Icon } from "@trussworks/react-uswds";
-
-function buildChartData(names, targetValues, actualValues) {
-  let dataArray = [];
-  if(!names) {
-    return [];
-  }
-  names.forEach((name, index) => {
-    dataArray.push({
-      name: name,
-      Targets: targetValues[index],
-      Actuals: actualValues[index],
-    })
-  })
-  return dataArray
-}
+import IndicatorChart from "./indicator-chart";
 
 const ObjectiveIndicator = ({indicator, borders}) => {
   const [open, setOpen] = useState(false)
   const { name, measurements } = indicator;
-  const data = buildChartData(indicator.names, indicator.targetValues, indicator.values);
   return(
     <div className={`objective-indicator text-no-underline font-sans-md text-base-darkest ${borders}`}>
       <button 
@@ -71,15 +56,12 @@ const ObjectiveIndicator = ({indicator, borders}) => {
             </table>
             )}
           </div>
-          <div>
-            <LineChart width={600} height={300} data={data}>
-              <Line type="monotone" dataKey="Targets" stroke="#162152" />
-              <Line type="monotone" dataKey="Actuals" stroke="#E41B3C" />
-              <CartesianGrid stroke="#ccc" />
-              <XAxis dataKey="name" />
-              <YAxis />
-            </LineChart>
-          </div>
+          <IndicatorChart
+            names={indicator.names}
+            values={indicator.values}
+            targetValues={indicator.targetValues}
+            size={"large"}
+          />
           {indicator.notes?.processed && (
             <div dangerouslySetInnerHTML={{ __html: indicator.notes?.processed }} />
           )}

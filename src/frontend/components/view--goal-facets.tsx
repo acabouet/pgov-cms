@@ -9,7 +9,7 @@ const ViewGoalFacets = ({handleSearch, handleClose}) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setFacets(data));
-  }, []);
+  }, [url]);
 
   const [checkedFacets, setCheckedFacets] = useState([])
 

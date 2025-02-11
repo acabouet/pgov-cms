@@ -22,7 +22,10 @@ export function NodeGoalCard({ goal, ...props }: NodeGoalCardProps) {
         <div className="usa-card__container" >
           <div className="grid-row flex-justify padding-top-1 padding-x-2">
             <FieldGoalType field_goal_type={goalType} />
-            <FieldPeriod field_period={period} />
+            <FieldPeriod
+              startTime={plan.administration.dateRange.start.time}
+              endTime={plan.administration.dateRange.end.time}
+            />
           </div>
           <div className="usa-card__header">
             <h4 className="usa-card__heading">{title}</h4>
