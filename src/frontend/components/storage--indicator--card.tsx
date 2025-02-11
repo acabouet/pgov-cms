@@ -8,10 +8,7 @@ import IndicatorChart from './indicator-chart';
 
 export function StorageIndicatorCard({ goal, ...props }: any) {
   const { description, objective } = goal;
-  // console.log(goal)
   const chartData = objective.indicators.find((indicator) => (indicator.id == goal.id));
-  // console.log(agency);
-  // const { acronym: agencyAcronym, logo: agencyLogo, title: agencyTitle } = agency;
   return (
     <div className="goal-card padding-1">
       <Link href={objective.goal.path}>

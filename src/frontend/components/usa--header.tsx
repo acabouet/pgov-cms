@@ -36,25 +36,5 @@ export function USAHeader() {
         </Link>
       </nav>
     </header>
-    // <Header basic={true} showMobileOverlay={expanded} className="dark-blue-bg">
-    //    <div className="usa-nav-container padding-top-1">
-    //       <div className="usa-navbar">
-    //         <Title>
-              // <Image
-              //   src={PGovLogo}
-              //   width={56}
-              //   height={56}
-              //   alt={"Performance.gov logo"}
-              //   priority
-              //   className=""
-              // />
-    //         </Title>
-    //         <NavMenuButton onClick={onClick} label="Menu" />
-    //       </div>
-    //       <PrimaryNav items={menuItems} mobileExpanded={expanded} onToggleMobileNav={onClick}>
-    //         <Search size="small" onSubmit={(e) => {e.preventDefault(); console.log("Search");}} />
-    //       </PrimaryNav>
-    //     </div>
-    // </Header>
   );
 }

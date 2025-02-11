@@ -182,7 +182,6 @@ export const graphqlQueries = {
         Topics: ${JSON.stringify(facets)},
         aggregated_administration: ${JSON.stringify(administration)},
         aggregated_type: ${JSON.stringify(type)},
-        storage_topic_name: ${JSON.stringify(facets)}
       }) {
     pageInfo {
       total
