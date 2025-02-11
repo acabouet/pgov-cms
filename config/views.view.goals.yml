@@ -399,10 +399,10 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        aggregated_field:
-          id: aggregated_field
+        search_api_relevance:
+          id: search_api_relevance
           table: search_api_index_goals
-          field: aggregated_field
+          field: search_api_relevance
           relationship: none
           group_type: group
           admin_label: ''
