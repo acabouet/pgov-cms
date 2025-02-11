@@ -31,7 +31,7 @@ const renderCard = (goal: any) => {
 export default function GoalsSearchView({ filters, goals, total, description }: ViewGoalSearch) {
   const offsetAmount = 15;
   const [fulltext, setFulltext] = useState(filters[0]?.value ? filters[0].value : "");
-  const [administration, setAdministration] = useState("45");
+  const [administration, setAdministration] = useState("53");
   const [totalResults, setTotalResults] = useState(total)
   const [displayGoals, setDisplayGoals] = useState(goals);
   const [viewType, setViewType] = useState([]);
