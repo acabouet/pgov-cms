@@ -68,7 +68,7 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
 
   const masonryBP = filtersOpen ? {350: 1, 750: 2, 1400: 3} : {350: 1, 750: 2, 1060: 3, 1400: 4};
   return (
-    <div className="view--goal-search">
+    <div>
       <div className="grid-row flex-column flex-align-center hero text-white padding-y-5">
         <h1 className="font-heading-2xl">{description}</h1>
         <p className="font-sans-lg margin-y-0">Smart Strategy. Strong Execution.</p>
